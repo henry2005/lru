@@ -167,15 +167,6 @@ public class LRUCache<K, V> implements Cache<K, V> {
         return old;
     }
 
-    protected Entry<K, V> getEntry(K key) {
-        return localCache.get(key);
-    }
-
-    @Override
-    public int size() {
-        return localCache.size();
-    }
-
     /**
      * 从Loader中加载数据
      * @param key
@@ -322,8 +313,9 @@ public class LRUCache<K, V> implements Cache<K, V> {
             Node t = tail;
             if (t == null) {
                 // 第一个Node
-                if (compareAndSetHead(null, node))
+                if (compareAndSetHead(null, node)) {
                     tail = head;
+                }
             } else {
                 // 追加Node至LRU尾部
                 node.prev = t;
@@ -395,6 +387,15 @@ public class LRUCache<K, V> implements Cache<K, V> {
                 }
             }
         }
+    }
+
+    protected Entry<K, V> getEntry(K key) {
+        return localCache.get(key);
+    }
+
+    @Override
+    public int size() {
+        return localCache.size();
     }
 
     // 数据是否有效
