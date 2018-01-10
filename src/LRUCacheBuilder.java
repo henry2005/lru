@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author quyan
  * @version 1.0
- * @date 2018/1/8
+ * @date 2018/1/9
  * @company lzh
  * @category com.lzhplus.app.activity
  * @copyright copyright(c) 2015~2016
